@@ -50,7 +50,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn :disabled="!valid" color="primary" flat @click="editUser">accept</v-btn>
-            <v-btn flat @click="dialog = false">cancel</v-btn>
+            <v-btn color="error" flat @click="dialog = false">cancel</v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -130,5 +130,8 @@ export default {
 }
 .input {
   margin: 0 50px;
+}
+.headline {
+  margin-bottom: 20px;
 }
 </style>
