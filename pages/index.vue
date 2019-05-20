@@ -101,7 +101,13 @@ export default {
       })
       .then(response => response.json())
       .then(json => console.log(json))
-
+      let newVal = {
+        id: this.savedUser.id,
+        name: this.savedUser.name,
+        email: this.savedUser.email,
+        company: { name: this.savedUser.company}
+      }
+      this.users.splice(this.savedUser.id - 1, 1, newVal)
       this.dialog = false
     }
   },
