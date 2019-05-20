@@ -63,10 +63,10 @@ export default {
   data() {
     return {
       headers: [
-        {text: 'id',value: 'id', align: 'left'},
-        {text: 'name',value: 'name', align: 'left'},
-        {text: 'email',value: 'email', align: 'left'},
-        {text: 'company',value: 'company', align: 'left'}
+        {text: 'id',value: 'id'},
+        {text: 'name',value: 'name'},
+        {text: 'email',value: 'email'},
+        {text: 'company',value: 'company'}
       ],
       users: [],
       dialog: false,
@@ -81,23 +81,19 @@ export default {
       this.users = await res.json()
     },
     openDialog(val) {
-      const newVal = {
+      this.savedUser = {
         id: val.id,
         name: val.name,
         email: val.email,
         company: val.company.name
       }
-      this.savedUser = newVal
       this.dialog = true
     },
     editUser() {
       fetch(`https://jsonplaceholder.typicode.com/users/${this.savedUser.id}`, {
         method: 'PUT',
         body: JSON.stringify({
-          id: this.savedUser.id,
-          name: this.savedUser.name,
-          email: this.savedUser.email,
-          company: this.savedUser.company
+          ...this.savedUser
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8"
